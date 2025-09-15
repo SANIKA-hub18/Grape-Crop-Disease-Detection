@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block pagetitle %}Grape Disease Detection - AI Engine{% endblock pagetitle %}
+
+{% block body %}
+<style>
+  body {
+    background: url("{{ url_for('static', filename='images/Grape.jpg') }}") no-repeat center center fixed;   
+    background-size: cover;
+    color: rgb(61, 56, 56);
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+  .container {
+    padding-top: 50px;
+  }
+  .card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+  }
+  .card:hover {
+    transform: scale(1.05);
+  }
+  .btn-custom {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: rgb(0, 0, 0);
+    padding: 12px 25px;
+    border-radius: 30px;
+    transition: all 0.3s;
+  }
+  .btn-custom:hover {
+    transform: translateY(-3px);
+  }
+</style>
+
+<div class="container">
+  <h1 class="title">🍇 AI-Powered Grape Disease Detection 🍇</h1>
+  <p class="lead">Upload a grape leaf image to detect potential diseases.</p>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <div class="card p-5">
+        <h5 class="mb-4">Upload a Grape Leaf Image</h5>
+        <form action="/submit" method="POST" enctype="multipart/form-data">
+          <input type="file" name="image" class="form-control mb-3">
+          <button type="submit" class="btn btn-custom">Analyze</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}

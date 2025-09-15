@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% block pagetitle %}
+Grape Disease Detection Results
+{% endblock pagetitle %}
+
+{% block body %}
+<style>
+  body {
+    background: url("{{ url_for('static', filename='images/grape_bg.jpg') }}") no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .overlay {
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .container {
+    padding-top: 50px;
+    position: relative;
+    z-index: 2;
+  }
+  .card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+    color: white;
+  }
+  .card:hover {
+    transform: scale(1.05);
+  }
+  .btn-custom {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    transition: all 0.3s;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(255, 75, 43, 0.5);
+  }
+  .btn-custom:hover {
+    background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 15px rgba(255, 75, 43, 0.7);
+  }
+</style>
+
+<div class="overlay"></div>
+
+<div class="container">
+  <h1 class="title">🍇 Grape Disease Detection Results 🍇</h1>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <div class="card p-4">
+        <h5>Detected Grape Condition: {{title}}</h5>
+        <img src="{{image_url}}" width="250" height="250" class="rounded">
+        <p>{{desc}}</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card p-4">
+        <h5>Prevention Steps</h5>
+        <p>{{prevent}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-6">
+      <div class="card p-4">
+        <h5>Recommended Supplement for Grape</h5>
+        <img src="{{simage}}" width="250" height="250" class="rounded">
+        <p>{{sname}}</p>
+        <a target="_blank" href="{{buy_link}}">
+          <button class="btn btn-custom">Buy Now</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-4">
+      <a href="/" class="btn btn-custom">🏠 Home</a>
+    </div>
+    <div class="col-md-4">
+      <a href="/index" class="btn btn-custom">🤖 AI Engine</a>
+    </div>
+    <div class="col-md-4">
+      <a href="./market.html" class="btn btn-custom">🛒 Supplements</a>
+    </div>
+  </div>
+</div>
+{% endblock body %}
